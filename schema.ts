@@ -74,5 +74,23 @@ export default defineSchema({
     recycle_bin: defineTable({
         type: v.string(),
         value: v.any(),
-    })
+    }),
+
+    // v2 version
+    v2_chat_detail: defineTable({
+        user: v.id('users'),
+        model:  v.string(),
+        humans: v.string(),
+        robot: v.string(),
+        gas: v.optional(v.number()),
+    }),
+    v2_chat_collect: defineTable({
+        user: v.id('users'),
+        year: v.number(),
+        month: v.number(),
+        day: v.number(),
+        hour: v.number(),
+        number: v.number(),
+        gas: v.number()
+    }),
 });
