@@ -6,9 +6,9 @@ import { internal } from '../../_generated/api';
 // local
 import type { ListRequest, MessageResult } from './message';
 import Model from './model';
-import Assistant from './assistant';
-import Thread, { RunResult } from './thread';
-import Message from './message';
+import Assistant, { AssistantV2 } from './assistant';
+import Thread, { RunResult, ThreadV2 } from './thread';
+import Message, { MessageV2 } from './message';
 
 type chatParams = {
     user: Doc<'users'>,
@@ -24,9 +24,9 @@ type chatAssistant = {
 
 export default class Chat {
     private modelsService = new Model();
-    private assistantService = new Assistant();
-    private threadService = new Thread();
-    private messageService = new Message();
+    private assistantService = new AssistantV2();
+    private threadService = new ThreadV2();
+    private messageService = new MessageV2();
 
     public getModelList = async () => this.modelsService.getList();
 

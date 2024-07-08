@@ -41,7 +41,7 @@ export type GetParams = {
 }
 
 export default class Message extends Request {
-    private headers = () => ({
+    protected headers = () => ({
         'Authorization': this.apiKey(),
         'Content-Type': 'application/json',
         'OpenAI-Beta': 'assistants=v1',
@@ -80,4 +80,12 @@ export default class Message extends Request {
             })
         }
     );
+}
+
+export class MessageV2 extends Message {
+    protected headers = () => ({
+        'Authorization': this.apiKey(),
+        'Content-Type': 'application/json',
+        'OpenAI-Beta': 'assistants=v1',
+    });
 }

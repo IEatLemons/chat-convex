@@ -30,7 +30,7 @@ export type ListRequest = {
 }
 
 export default class Assistant extends Request {
-    private headers = () => ({
+    protected headers = () => ({
         'Authorization': this.apiKey(),
         'Content-Type': 'application/json',
         'OpenAI-Beta': 'assistants=v1',
@@ -72,4 +72,13 @@ export default class Assistant extends Request {
             headers: this.headers(),
         }
     )
+}
+
+
+export class AssistantV2 extends Assistant {
+    protected headers = () => ({
+        'Authorization': this.apiKey(),
+        'Content-Type': 'application/json',
+        'OpenAI-Beta': 'assistants=v2',
+    });
 }

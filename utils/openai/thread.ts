@@ -56,7 +56,7 @@ export type CreateAndRunParams = {
 }
 
 export default class Thread extends Request {
-    private headers = () => ({
+    protected headers = () => ({
         'Authorization': this.apiKey(),
         'Content-Type': 'application/json',
         'OpenAI-Beta': 'assistants=v1',
@@ -105,4 +105,12 @@ export default class Thread extends Request {
             })
         }
     )
+}
+
+export class ThreadV2 extends Thread {
+    protected headers = () => ({
+        'Authorization': this.apiKey(),
+        'Content-Type': 'application/json',
+        'OpenAI-Beta': 'assistants=v2',
+    });
 }

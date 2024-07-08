@@ -23,6 +23,7 @@ import type * as user_account from "../user_account.js";
 import type * as users from "../users.js";
 import type * as utils_account_index from "../utils/account/index.js";
 import type * as utils_auth from "../utils/auth.js";
+import type * as utils_chat_chat from "../utils/chat/chat.js";
 import type * as utils_chat_chat_collect from "../utils/chat/chat_collect.js";
 import type * as utils_chat_index from "../utils/chat/index.js";
 import type * as utils_chat_token from "../utils/chat/token.js";
@@ -36,6 +37,7 @@ import type * as utils_openai_model from "../utils/openai/model.js";
 import type * as utils_openai_request from "../utils/openai/request.js";
 import type * as utils_openai_thread from "../utils/openai/thread.js";
 import type * as utils_string from "../utils/string.js";
+import type * as v2_v2_chat_collect from "../v2/v2_chat_collect.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -55,6 +57,7 @@ declare const fullApi: ApiFromModules<{
   users: typeof users;
   "utils/account/index": typeof utils_account_index;
   "utils/auth": typeof utils_auth;
+  "utils/chat/chat": typeof utils_chat_chat;
   "utils/chat/chat_collect": typeof utils_chat_chat_collect;
   "utils/chat/index": typeof utils_chat_index;
   "utils/chat/token": typeof utils_chat_token;
@@ -68,6 +71,7 @@ declare const fullApi: ApiFromModules<{
   "utils/openai/request": typeof utils_openai_request;
   "utils/openai/thread": typeof utils_openai_thread;
   "utils/string": typeof utils_string;
+  "v2/v2_chat_collect": typeof v2_v2_chat_collect;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
