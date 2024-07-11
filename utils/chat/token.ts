@@ -1,15 +1,15 @@
-import { GenericMutationCtx } from "convex/server";
-import { Doc, Id } from "../../_generated/dataModel";
+import { GenericMutationCtx } from 'convex/server';
+import { Doc, Id } from '../../_generated/dataModel';
 
 export const calculatorChaTFee = (texts: string[]) => {
     const token: number = tokenCalculator(texts);
 
     return tokenFeeCalculator(token);
-}
+};
 
 export const tokenCalculator = (text: string | string[]): number => {
-    if (typeof(text) === 'string') {
-        return calculator(text)
+    if (typeof text === 'string') {
+        return calculator(text);
     }
 
     let token: number = 0;
@@ -18,7 +18,7 @@ export const tokenCalculator = (text: string | string[]): number => {
     });
 
     return token;
-}
+};
 
 const calculator = (text: string): number => {
     // 正则表达式用于匹配可能的令牌，包括单词、数字和标点符号
@@ -29,21 +29,22 @@ const calculator = (text: string): number => {
 
     // 返回匹配到的令牌数量
     return tokens ? tokens.length : 0;
-}
+};
 
 export const tokenFeeCalculator = (token: number): number => {
     const price = 0.03;
 
     return price * (token / 1000);
-}
-
+};
 
 export const tokenGasSave = async ({
-    ctx, detail, robot
-} : {
-    ctx: GenericMutationCtx<any>,
-    detail: Doc<'chat_detail'>,
-    robot?: string,
+    ctx,
+    detail,
+    robot,
+}: {
+    ctx: GenericMutationCtx<any>;
+    detail: Doc<'chat_detail'>;
+    robot?: string;
 }) => {
     const text: string[] = [detail.humans];
     if (robot && robot !== '') {
@@ -54,6 +55,6 @@ export const tokenGasSave = async ({
     const gas = tokenCalculator(text);
     return ctx.db.patch(detail._id, {
         robot: robot ?? detail.robot,
-        gas
+        gas,
     });
-}
+};

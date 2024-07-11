@@ -1,16 +1,20 @@
-import { GenericMutationCtx } from "convex/server"
-import { Doc, Id } from "../../_generated/dataModel"
-import { authUser } from "../auth"
-import { tokenCalculator } from "./token"
+import { GenericMutationCtx } from 'convex/server';
+import { Doc, Id } from '../../_generated/dataModel';
+import { authUser } from '../auth';
+import { tokenCalculator } from './token';
 
 export const saveMessageV2 = async ({
-    ctx, message, model, robot, id
-} : {
-    ctx: GenericMutationCtx<any>,
-    message: string,
-    model: string,
-    robot: boolean,
-    id? : Id<'v2_chat_detail'>
+    ctx,
+    message,
+    model,
+    robot,
+    id,
+}: {
+    ctx: GenericMutationCtx<any>;
+    message: string;
+    model: string;
+    robot: boolean;
+    id?: Id<'v2_chat_detail'>;
 }): Promise<Id<'v2_chat_detail'> | null> => {
     const user = await authUser(ctx);
 
@@ -35,4 +39,4 @@ export const saveMessageV2 = async ({
     }
 
     return null;
-}
+};
