@@ -21,6 +21,15 @@ export const getChatHistory = query({
     },
 });
 
+export const getChatHistoryByThread = mutation({
+    args: { thread: v.string() },
+    handler: async (ctx, args) =>
+        ctx.db
+            .query('chat_history')
+            .filter((q) => q.eq(q.field('thread'), args.thread))
+            .first(),
+});
+
 export const internalGetChatHistoryByID = internalQuery({
     args: { history: v.id('chat_history') },
     handler: async (ctx, args) => ctx.db.get(args.history),
